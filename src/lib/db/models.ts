@@ -15,7 +15,7 @@ export async function getModelBySlug(slug: string): Promise<Model> {
         .from("models")
         .select("*")
         .eq("slug", slug)
-        .single();
+        .maybeSingle();
 
     if (error) {
         throw new Error(error.message);
