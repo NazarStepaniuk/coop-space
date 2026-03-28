@@ -10,7 +10,7 @@ export async function getModels() {
     return data;
 }
 
-export async function getModel(slug: string): Promise<Model> {
+export async function getModelBySlug(slug: string): Promise<Model> {
     const { data, error } = await supabase
         .from("models")
         .select("*")

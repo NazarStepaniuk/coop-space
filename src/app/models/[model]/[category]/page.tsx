@@ -1,5 +1,5 @@
-import { getModel } from "@/lib/db/models";
-import { getCategory } from "@/lib/db/categories";
+import { getModelBySlug } from "@/lib/db/models";
+import { getCategoryBySlug } from "@/lib/db/categories";
 import { getProducts } from "@/lib/db/products";
 
 import Link from "next/link";
@@ -16,12 +16,12 @@ export default async function CategoryPage({
 }) {
     const { model: modelSlug, category: categorySlug } = await params;
 
-    const model = await getModel(modelSlug);
+    const model = await getModelBySlug(modelSlug);
     if (!model) {
         return <div>Модель не найдена</div>;
     }
 
-    const category = await getCategory(categorySlug);
+    const category = await getCategoryBySlug(categorySlug);
     if (!category) {
         return <div>Категория не найдена</div>;
     }

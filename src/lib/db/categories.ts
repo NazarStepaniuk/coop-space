@@ -23,7 +23,7 @@ export async function getCategories(modelId: string) {
     return data;
 }
 
-export async function getCategory(slug: string) {
+export async function getCategoryBySlug(slug: string) {
     const { data, error } = await supabase
         .from("categories")
         .select("*")

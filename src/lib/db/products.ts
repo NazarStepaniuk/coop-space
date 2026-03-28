@@ -23,3 +23,17 @@ export async function getProducts(modelId: string, categoryId: string) {
 
     return data;
 }
+
+export async function getProduct(slug: string) {
+    const { data, error } = await supabase
+        .from("products")
+        .select("*")
+        .eq("slug", slug)
+        .maybeSingle();
+
+    if (error) {
+        throw new Error(error.message);
+    }
+
+    return data;
+}
