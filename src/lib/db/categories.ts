@@ -1,6 +1,7 @@
 import { supabase } from "@/lib/supabase";
+import { Category } from "@/types/category";
 
-export async function getCategories(modelId: string) {
+export async function getCategories(modelId: string): Promise<Category[]> {
     const { data, error } = await supabase
         .from("category_models")
         .select(
@@ -20,10 +21,12 @@ export async function getCategories(modelId: string) {
         throw new Error(error.message);
     }
 
-    return data;
+    const categories = data?.flatMap((item) => item.categories ?? []) ?? [];
+
+    return categories;
 }
 
-export async function getCategoryBySlug(slug: string) {
+export async function getCategoryBySlug(slug: string): Promise<Category> {
     const { data, error } = await supabase
         .from("categories")
         .select("*")

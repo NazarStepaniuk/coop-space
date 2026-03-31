@@ -14,8 +14,7 @@ export default async function ModelPage({
     const { model: modelSlug } = await params;
     const model = await getModelBySlug(modelSlug);
 
-    const categoriesData = await getCategories(model.id);
-    const categories = categoriesData?.map((item) => item.categories).flat();
+    const categories = await getCategories(model.id);
 
     return (
         <div>
@@ -27,11 +26,13 @@ export default async function ModelPage({
                 <div key={category.id}>
                     <Link href={`/models/${model.slug}/${category.slug}`}>
                         {category.name}
-                        <img
-                            src={category.image_url}
-                            alt={category.slug}
-                            width={200}
-                        />
+                        {category.image_url && (
+                            <img
+                                src={category.image_url}
+                                alt={category.slug}
+                                width={200}
+                            />
+                        )}
                     </Link>
                 </div>
             ))}

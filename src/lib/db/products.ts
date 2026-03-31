@@ -1,6 +1,10 @@
 import { supabase } from "@/lib/supabase";
+import { Product, ProductImage } from "@/types/product";
 
-export async function getProducts(modelId: string, categoryId: string) {
+export async function getProducts(
+    modelId: string,
+    categoryId: string,
+): Promise<Product[]> {
     const { data, error } = await supabase
         .from("products")
         .select(
@@ -9,6 +13,8 @@ export async function getProducts(modelId: string, categoryId: string) {
             name,
             price,
             slug,
+            category_id,
+            created_at,
             product_models!inner (
                 model_id
             )
@@ -24,7 +30,7 @@ export async function getProducts(modelId: string, categoryId: string) {
     return data;
 }
 
-export async function getProduct(slug: string) {
+export async function getProduct(slug: string): Promise<Product> {
     const { data, error } = await supabase
         .from("products")
         .select("*")
@@ -38,7 +44,9 @@ export async function getProduct(slug: string) {
     return data;
 }
 
-export async function getProductImages(productIds: string[]) {
+export async function getProductImages(
+    productIds: string[],
+): Promise<ProductImage[]> {
     if (productIds.length === 0) return [];
 
     const { data, error } = await supabase
