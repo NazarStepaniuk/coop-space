@@ -27,6 +27,11 @@ export default async function ModelPage({
                 <div key={category.id}>
                     <Link href={`/models/${model.slug}/${category.slug}`}>
                         {category.name}
+                        <img
+                            src={category.image_url}
+                            alt={category.slug}
+                            width={200}
+                        />
                     </Link>
                 </div>
             ))}

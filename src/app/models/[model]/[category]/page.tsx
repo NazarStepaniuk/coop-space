@@ -1,6 +1,6 @@
 import { getModelBySlug } from "@/lib/db/models";
 import { getCategoryBySlug } from "@/lib/db/categories";
-import { getProducts } from "@/lib/db/products";
+import { getProducts, getProductImages } from "@/lib/db/products";
 
 import Link from "next/link";
 
@@ -27,6 +27,15 @@ export default async function CategoryPage({
     }
 
     const products = await getProducts(model.id, category.id);
+    const productIds = products.map((product) => product.id).filter(Boolean);
+    const productImages = await getProductImages(productIds);
+    const productImagesMap = new Map();
+
+    productImages.forEach((img) => {
+        if (!productImagesMap.has(img.product_id)) {
+            productImagesMap.set(img.product_id, img);
+        }
+    });
 
     return (
         <div>
@@ -37,16 +46,25 @@ export default async function CategoryPage({
 
             {products?.length === 0 && <p>Нет товаров</p>}
 
-            {products?.map((product) => (
-                <div key={product.id}>
-                    <Link
-                        href={`/models/${model.slug}/${category.slug}/${product.slug}`}
-                    >
-                        {product.name}
-                    </Link>{" "}
-                    — {product.price}$
-                </div>
-            ))}
+            {products?.map((product) => {
+                const image = productImagesMap.get(product.id);
+                return (
+                    <div key={product.id}>
+                        <Link
+                            href={`/models/${model.slug}/${category.slug}/${product.slug}`}
+                        >
+                            {image && (
+                                <img
+                                    src={image.image_url}
+                                    alt={product.name}
+                                    width={150}
+                                />
+                            )}
+                            {product.name}
+                        </Link>
+                    </div>
+                );
+            })}
         </div>
     );
 }

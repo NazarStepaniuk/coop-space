@@ -37,3 +37,19 @@ export async function getProduct(slug: string) {
 
     return data;
 }
+
+export async function getProductImages(productIds: string[]) {
+    if (productIds.length === 0) return [];
+
+    const { data, error } = await supabase
+        .from("product_images")
+        .select("*")
+        .in("product_id", productIds)
+        .order("is_main", { ascending: false });
+
+    if (error) {
+        throw new Error(error.message);
+    }
+
+    return data;
+}
