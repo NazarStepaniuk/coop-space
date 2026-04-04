@@ -1,5 +1,5 @@
 import { supabase } from "@/lib/supabase";
-import { Product, ProductImage } from "@/types/product";
+import { Product, ProductImage, ProductWithImage } from "@/types/product";
 
 export async function getProducts(
     modelId: string,
@@ -60,4 +60,25 @@ export async function getProductImages(
     }
 
     return data;
+}
+
+export async function getProductsWithImages(
+    modelId: string,
+    categoryId: string,
+): Promise<ProductWithImage[]> {
+    const products = await getProducts(modelId, categoryId);
+    const ids = products.map((p) => p.id);
+    const images = await getProductImages(ids);
+    const imagesMap = new Map<string, ProductImage>();
+
+    images.forEach((img) => {
+        if (!imagesMap.has(img.product_id)) {
+            imagesMap.set(img.product_id, img);
+        }
+    });
+
+    return products.map((product) => ({
+        ...product,
+        image: imagesMap.get(product.id) || null,
+    }));
 }

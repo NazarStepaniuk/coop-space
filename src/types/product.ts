@@ -13,3 +13,7 @@ export type ProductImage = {
     image_url: string;
     is_main: boolean;
 };
+
+export type ProductWithImage = Product & {
+    image: ProductImage | null;
+};
