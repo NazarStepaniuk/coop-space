@@ -7,6 +7,12 @@ export type Product = {
     created_at: string;
 };
 
+export type ProductFromDB = Product & {
+    product_models: {
+        role: ProductRole;
+    }[];
+};
+
 export type ProductImage = {
     id: string;
     product_id: string;
@@ -14,6 +20,13 @@ export type ProductImage = {
     is_main: boolean;
 };
 
-export type ProductWithImage = Product & {
+export type ProductRole = "stock" | "facelift";
+
+export type ProductListItem = Product & {
     image: ProductImage | null;
+    role: ProductRole;
+};
+
+export type ProductDetails = Product & {
+    images: ProductImage[];
 };

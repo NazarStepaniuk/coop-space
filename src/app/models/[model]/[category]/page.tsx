@@ -1,6 +1,6 @@
 import { getModelBySlug } from "@/lib/db/models";
 import { getCategoryBySlug } from "@/lib/db/categories";
-import { getProductsWithImages } from "@/lib/db/products";
+import { getProductsForList } from "@/lib/db/products";
 
 import Link from "next/link";
 
@@ -26,7 +26,7 @@ export default async function CategoryPage({
         return <div>Категория не найдена</div>;
     }
 
-    const products = await getProductsWithImages(model.id, category.id);
+    const products = await getProductsForList(model.id, category.id);
 
     return (
         <div>

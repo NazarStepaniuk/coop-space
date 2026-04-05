@@ -1,4 +1,4 @@
-import { getProduct } from "@/lib/db/products";
+import { getProductBySlug } from "@/lib/db/products";
 
 type Params = {
     product: string;
@@ -11,7 +11,7 @@ export default async function ProductPage({
 }) {
     const { product: productSlug } = await params;
 
-    const product = await getProduct(productSlug);
+    const product = await getProductBySlug(productSlug);
     if (!product) {
         return <div>Продукт не найден</div>;
     }
@@ -20,6 +20,9 @@ export default async function ProductPage({
         <div>
             <h1>{product.name}</h1>
             <div>price: {product.price}</div>
+            {product.images?.map((img) => (
+                <img src={img.image_url} alt={product.name} width={350} />
+            ))}
         </div>
     );
 }
