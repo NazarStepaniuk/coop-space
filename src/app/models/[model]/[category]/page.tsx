@@ -2,7 +2,7 @@ import { getModelBySlug } from "@/lib/db/models";
 import { getCategoryBySlug } from "@/lib/db/categories";
 import { getProductsForList } from "@/lib/db/products";
 
-import Link from "next/link";
+import CategoryProducts from "@/components/CategoryProducts";
 
 type Params = {
     model: string;
@@ -33,28 +33,12 @@ export default async function CategoryPage({
             <h1>{model.name}</h1>
             <h2>{category.name}</h2>
 
-            <h3>Товары</h3>
-
             {products?.length === 0 && <p>Нет товаров</p>}
 
-            {products?.map((product) => {
-                return (
-                    <div key={product.id}>
-                        <Link
-                            href={`/models/${model.slug}/${category.slug}/${product.slug}`}
-                        >
-                            {product.image && (
-                                <img
-                                    src={product.image.image_url}
-                                    alt={product.name}
-                                    width={150}
-                                />
-                            )}
-                            {product.name}
-                        </Link>
-                    </div>
-                );
-            })}
+            <CategoryProducts
+                products={products}
+                basePath={`/models/${model.slug}/${category.slug}`}
+            />
         </div>
     );
 }
