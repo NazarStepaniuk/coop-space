@@ -7,12 +7,6 @@ export type Product = {
     created_at: string;
 };
 
-export type ProductFromDB = Product & {
-    product_models: {
-        role: ProductRole;
-    }[];
-};
-
 export type ProductImage = {
     id: string;
     product_id: string;
@@ -22,6 +16,25 @@ export type ProductImage = {
 
 export type ProductRole = "stock" | "facelift";
 
+export type ProductDB = Product & {
+    product_models: {
+        model_id: string;
+        role: ProductRole;
+    }[];
+};
+
+export type ProductWithCategory = Product & {
+    categories:
+        | {
+              slug: string;
+          }
+        | {
+              slug: string;
+          }[]
+        | null;
+};
+
+// UI
 export type ProductListItem = Product & {
     image: ProductImage | null;
     role: ProductRole;
@@ -29,4 +42,19 @@ export type ProductListItem = Product & {
 
 export type ProductDetails = Product & {
     images: ProductImage[];
+    product_models: {
+        model_id: string;
+        role: string;
+    }[];
+};
+
+export type RelatedProduct = {
+    id: string;
+    name: string;
+    price: number;
+    slug: string;
+    category_slug: string;
+    image: {
+        image_url: string;
+    } | null;
 };
