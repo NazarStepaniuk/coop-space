@@ -10,9 +10,12 @@
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.99.0",
-    "next": "16.1.6",
+    "modern-normalize": "^3.0.1",
+    "next": "^16.2.4",
+    "postcss-pxtorem": "^6.1.0",
     "react": "19.2.3",
-    "react-dom": "19.2.3"
+    "react-dom": "19.2.3",
+    "sass": "^1.99.0"
   },
   "devDependencies": {
     "@types/node": "^20",
