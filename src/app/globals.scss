@@ -26,6 +26,7 @@ h4,
 h5 {
     font-size: inherit;
     font-weight: inherit;
+    line-height: 1.2;
 }
 
 img {
@@ -38,7 +39,37 @@ html {
 }
 
 body {
-    background-color: $light;
     font-family: var(--font-sans), system-ui, sans-serif;
-    font-weight: 500;
+    line-height: 1.5;
 }
+
+.container {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 16px;
+}
+
+@media (min-width: 768px) {
+    .container {
+        max-width: 720px;
+        padding: 0 24px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .container {
+        max-width: 960px;
+    }
+}
+
+@media (min-width: 1280px) {
+    .container {
+        max-width: 1200px;
+    }
+}
+
+// @media (min-width: 1536px) {
+//   .container {
+//     max-width: 1320px;
+//   }
+// }
