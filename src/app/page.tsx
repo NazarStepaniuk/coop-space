@@ -1,10 +1,9 @@
-import Link from "next/link";
+import Promo from "@/components/promo/Promo";
 
 export default async function Home() {
     return (
         <div>
-            <h1>Главная</h1>
-            <Link href="/models">Модели</Link>
+            <Promo />
         </div>
     );
 }
