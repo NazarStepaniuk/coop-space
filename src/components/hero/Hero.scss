@@ -1,0 +1,108 @@
+@use "@/assets/styles/variables" as *;
+
+.hero {
+    padding-top: 30px;
+    &__wrapper {
+        display: flex;
+        gap: 20px;
+        flex-direction: column;
+        align-items: center;
+    }
+    &__title {
+        font-size: 24px;
+        font-weight: 700;
+    }
+    &__search {
+        width: 250px;
+
+        height: 35px;
+        padding: 0 15px;
+        border: none;
+        border-radius: 10px;
+        background-color: rgb(231, 231, 231);
+        &:focus {
+            outline: none;
+        }
+    }
+    &__link {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto;
+        margin-top: 20px;
+        width: 200px;
+        height: 35px;
+        background-color: $color-primary;
+        text-decoration: none;
+        color: #fff;
+        font-size: 14px;
+        font-weight: 500;
+    }
+
+    &__list {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 180px));
+        justify-content: center;
+        gap: 10px;
+        padding: 0;
+        margin-top: 45px;
+
+        li {
+            list-style: none;
+        }
+    }
+
+    &__card {
+        width: 100%;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        height: 170px;
+        padding: 5px;
+        border: 1px solid #8e8e8e;
+        border-radius: 10px;
+        text-decoration: none;
+    }
+
+    &__card-img {
+        position: relative;
+        width: 100%;
+        height: 110px;
+        flex-shrink: 0;
+    }
+
+    &__card-name {
+        margin-top: 6px;
+        font-size: 14px;
+        text-align: center;
+        color: #000;
+        font-weight: 400;
+
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+}
+
+@media (min-width: 768px) {
+    .hero {
+        &__title {
+            font-size: 28px;
+        }
+
+        &__list {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+}
+
+@media (min-width: 1024px) {
+    .hero {
+        &__list {
+            grid-template-columns: repeat(4, 1fr);
+        }
+    }
+}
