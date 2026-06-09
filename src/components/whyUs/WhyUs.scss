@@ -1,0 +1,51 @@
+@use "@/assets/styles/variables" as *;
+
+.why-us {
+    padding-top: 60px;
+    &__title {
+        font-size: 28px;
+        font-weight: 700;
+        text-align: center;
+    }
+    &__wrapper {
+        margin-top: 40px;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    &__item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    &__subtitle {
+        font-size: 20px;
+        font-weight: 600;
+        color: $color-secondary;
+    }
+    &__icon {
+        margin-top: 12px;
+    }
+    &__text {
+        font-size: 16px;
+        margin-top: 8px;
+        color: $color-primary;
+    }
+}
+
+@media (min-width: 768px) {
+    .why-us {
+        &__wrapper {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+}
+
+@media (min-width: 1536px) {
+    .why-us {
+        &__wrapper {
+            grid-template-columns: repeat(4, 1fr);
+        }
+    }
+}

@@ -1,4 +1,5 @@
 import Hero from "@/components/hero/Hero";
+import WhyUs from "@/components/whyUs/WhyUs";
 import { getModels } from "@/lib/db/models";
 
 export default async function Home() {
@@ -7,6 +8,7 @@ export default async function Home() {
     return (
         <div>
             <Hero models={models} />
+            <WhyUs />
         </div>
     );
 }

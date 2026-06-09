@@ -9,7 +9,7 @@
         align-items: center;
     }
     &__title {
-        font-size: 24px;
+        font-size: 28px;
         font-weight: 700;
     }
     &__search {
@@ -89,10 +89,6 @@
 
 @media (min-width: 768px) {
     .hero {
-        &__title {
-            font-size: 28px;
-        }
-
         &__list {
             grid-template-columns: repeat(3, 1fr);
         }
