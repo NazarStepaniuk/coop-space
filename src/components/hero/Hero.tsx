@@ -9,7 +9,7 @@ export default function Hero({ models }: { models: Model[] }) {
         <section className="hero">
             <div className="container">
                 <div className="hero__wrapper">
-                    <h1 className="hero__title">
+                    <h1 className="title-h1">
                         Знайди запчастини
                         <br />
                         для свого MINI

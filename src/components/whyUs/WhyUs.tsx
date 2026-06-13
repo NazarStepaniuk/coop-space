@@ -5,7 +5,7 @@ export default function WhyUs() {
     return (
         <section className="why-us">
             <div className="container">
-                <h2 className="why-us__title">Чому обирають нас?</h2>
+                <h2 className="why-us__title title-h2">Чому обирають нас?</h2>
                 <div className="why-us__wrapper">
                     <div className="why-us__item">
                         <h3 className="why-us__subtitle">Швидка доставка</h3>

@@ -1,18 +1,17 @@
-import Link from "next/link";
+import HeroModels from "@/components/hero/HeroModels";
 import { getModels } from "@/lib/db/models";
+import "./models.scss";
 
 export default async function ModelsPage() {
     const models = await getModels();
 
     return (
-        <div>
-            <h1>Модели</h1>
-
-            {models?.map((model) => (
-                <div key={model.id}>
-                    <Link href={`/models/${model.slug}`}>{model.name}</Link>
-                </div>
-            ))}
-        </div>
+        <section className="models">
+            <div className="container">
+                <h1 className="title-h1">Каталог запчастин MINI</h1>
+                <p className="models__subtitle">Оберіть модель автомобіля</p>
+                <HeroModels models={models} />
+            </div>
+        </section>
     );
 }

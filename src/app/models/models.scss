@@ -1,0 +1,13 @@
+@use "@/assets/styles/variables" as *;
+
+.models {
+    padding-top: 30px;
+
+    &__subtitle {
+        margin: 5px 0 35px 0;
+        font-size: 20px;
+        font-weight: 500;
+        color: $color-primary;
+        text-align: center;
+    }
+}
